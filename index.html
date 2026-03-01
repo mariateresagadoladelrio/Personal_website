@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teresa Gadola — Marketing & Branding</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===================================================
+       TOKENS
+    =================================================== */
+    :root {
+      --blush:        #C9D8EC;
+      --blush-light:  #E6EDF7;
+      --blush-deep:   #1F4080;
+      --cream:        #F5F7FA;
+      --cream-warm:   #ECF0F6;
+      --taupe:        #9BAFC6;
+      --taupe-dark:   #556E8A;
+      --charcoal:     #1A2840;
+      --charcoal-mid: #3D5470;
+      --gold:         #C49A3C;
+      --gold-light:   #E8D5A0;
+      --white:        #FFFFFF;
+
+      --serif:  'Playfair Display', Georgia, serif;
+      --sans:   'DM Sans', system-ui, sans-serif;
+      --script: 'Dancing Script', cursive;
+
+      --s1: 0 2px 10px rgba(26,40,64,.06);
+      --s2: 0 6px 28px rgba(26,40,64,.11);
+      --s3: 0 14px 54px rgba(26,40,64,.17);
+    }
+
+    /* ===================================================
+       RESET & BASE
+    =================================================== */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; font-size:16px; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--charcoal);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    img { display:block; max-width:100%; }
+    a   { color:inherit; }
+
+    /* ===================================================
+       UTILITY
+    =================================================== */
+    .section-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--script);
+      font-size: 1.05rem;
+      color: var(--taupe-dark);
+      display: block;
+      margin-bottom: .25rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--charcoal);
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--blush-deep);
+    }
+
+    .divider {
+      width: 56px;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--blush-deep), var(--gold));
+      margin: 1.4rem 0 3rem;
+    }
+
+    /* ===================================================
+       REVEAL ANIMATIONS
+    =================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .d1 { transition-delay: .10s; }
+    .d2 { transition-delay: .20s; }
+    .d3 { transition-delay: .30s; }
+    .d4 { transition-delay: .40s; }
+
+    /* ===================================================
+       HERO
+    =================================================== */
+    #hero {
+      min-height: 100vh;
+      background: var(--blush);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* soft radial glows */
+    #hero::before {
+      content:'';
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 15%, rgba(255,255,255,.35) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 85% 85%, rgba(224,149,159,.35) 0%, transparent 70%);
+      pointer-events:none;
+    }
+
+    /* subtle paper grain */
+    #hero::after {
+      content:'';
+      position:absolute; inset:0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+      pointer-events:none;
+      opacity:.5;
+    }
+
+    /* ---------- hero center text ---------- */
+    .hero-center {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      pointer-events: none;
+      padding: 1rem;
+    }
+
+    .hero-hi {
+      font-family: var(--script);
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--charcoal-mid);
+      display: block;
+      margin-bottom: .3rem;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3.8rem, 10vw, 7.5rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: .95;
+      letter-spacing: -.02em;
+    }
+
+    .hero-subtitle {
+      font-family: var(--sans);
+      font-size: clamp(.8rem, 1.8vw, 1rem);
+      font-weight: 300;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--charcoal-mid);
+      margin-top: .85rem;
+    }
+
+    .hero-tagline {
+      font-family: var(--script);
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      color: var(--charcoal);
+      margin-top: 1.6rem;
+      opacity: .75;
+    }
+
+    /* ---------- floating nav items ---------- */
+    .nav-float {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+    }
+
+    .nav-obj {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .3rem;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+      animation: drift 7s ease-in-out infinite;
+      transition: filter .3s;
+    }
+
+    .nav-obj:hover { filter: brightness(1.05); }
+
+    /* individual positions & animation offsets */
+    .obj-bag    { top: 28%;    left: 16%;  animation-delay: 0s;   animation-duration: 7.2s; }
+    .obj-ring   { top: 26%;    right: 16%; animation-delay: 1.1s; animation-duration: 6.8s; }
+    .obj-flower { bottom: 28%; left: 15%;  animation-delay: .6s;  animation-duration: 8s;   }
+    .obj-sunnies{ bottom: 24%; right: 15%; animation-delay: 1.7s; animation-duration: 7.5s; }
+    .obj-camera { top: 46%;    left: 9%;   animation-delay: 2.2s; animation-duration: 6.5s; }
+    .obj-env    { top: 46%;    right: 9%;  animation-delay: 2.8s; animation-duration: 7.8s; }
+
+    .obj-icon {
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      line-height: 1;
+      filter: drop-shadow(0 4px 10px rgba(51,40,40,.18));
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1), filter .3s;
+    }
+
+    .nav-obj:hover .obj-icon {
+      transform: scale(1.15) translateY(-6px);
+      filter: drop-shadow(0 10px 20px rgba(51,40,40,.22));
+    }
+
+    .obj-label {
+      font-family: var(--script);
+      font-size: clamp(.65rem, 1.4vw, .9rem);
+      color: var(--charcoal);
+      opacity: .8;
+      white-space: nowrap;
+      transition: opacity .3s;
+    }
+
+    .nav-obj:hover .obj-label { opacity: 1; }
+
+    @keyframes drift {
+      0%,100% { transform: translateY(0)   rotate(0deg);   }
+      30%      { transform: translateY(-13px) rotate(2.5deg); }
+      65%      { transform: translateY(-7px)  rotate(-1.5deg);}
+    }
+
+    /* pause drift on hover */
+    .nav-obj:hover { animation-play-state: paused; }
+
+    /* ---------- scroll hint ---------- */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .35rem;
+      animation: bob 2.2s ease-in-out infinite;
+    }
+
+    .scroll-hint span {
+      font-family: var(--script);
+      font-size: .8rem;
+      color: var(--charcoal-mid);
+    }
+
+    .scroll-chevron {
+      width: 18px; height: 18px;
+      border-right: 2px solid var(--charcoal-mid);
+      border-bottom: 2px solid var(--charcoal-mid);
+      transform: rotate(45deg);
+    }
+
+    @keyframes bob {
+      0%,100% { transform:translateX(-50%) translateY(0); }
+      50%      { transform:translateX(-50%) translateY(7px); }
+    }
+
+    /* ===================================================
+       ABOUT
+    =================================================== */
+    #about {
+      background: var(--cream);
+      padding: 7rem 2rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 5.5rem;
+      align-items: start;
+    }
+
+    /* --- Polaroid stack --- */
+    .polaroid-stack {
+      position: relative;
+      width: 210px;
+      flex-shrink: 0;
+    }
+
+    .polaroid-back {
+      position: absolute;
+      top: -8px; left: 10px;
+      width: 100%; height: 100%;
+      background: white;
+      transform: rotate(4deg);
+      box-shadow: var(--s2);
+    }
+
+    .polaroid {
+      position: relative;
+      background: white;
+      padding: 11px 11px 42px;
+      box-shadow: var(--s3);
+      transform: rotate(-2deg);
+      transition: transform .4s cubic-bezier(.34,1.4,.64,1), box-shadow .4s;
+      z-index: 2;
+    }
+
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.03);
+      box-shadow: 0 20px 60px rgba(51,40,40,.2);
+    }
+
+    .polaroid-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      background: linear-gradient(145deg, var(--blush-light) 0%, var(--blush) 60%, var(--blush-deep) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .polaroid-photo::after {
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(135deg,rgba(255,255,255,.15) 0%,transparent 55%);
+    }
+
+    .polaroid-caption {
+      font-family: var(--script);
+      font-size: .95rem;
+      color: var(--charcoal-mid);
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    /* gold-foil washi tape */
+    .washi {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1.5deg);
+      width: 72px; height: 20px;
+      border-radius: 2px;
+      z-index: 3;
+      overflow: hidden;
+    }
+
+    .washi::before {
+      content:'';
+      position:absolute; inset:0;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(196,151,74,.55)  0px,
+        rgba(232,213,163,.75) 4px,
+        rgba(196,151,74,.55)  8px
+      );
+    }
+
+    .washi::after {
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,.25) 0%,
+        transparent 40%,
+        rgba(0,0,0,.05) 100%
+      );
+    }
+
+    /* --- About text --- */
+    .about-body p {
+      font-size: 1.02rem;
+      line-height: 1.88;
+      color: var(--charcoal-mid);
+      margin-bottom: 1.1rem;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin: 1.4rem 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      background: var(--blush-light);
+      border: 1px solid rgba(244,194,200,.6);
+      border-radius: 30px;
+      padding: .38rem 1rem;
+      font-size: .82rem;
+      color: var(--charcoal);
+    }
+
+    .langs {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.6rem;
+    }
+
+    .lang {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .15rem;
+    }
+
+    .lang-flag { font-size: 2rem; }
+
+    .lang-name {
+      font-family: var(--script);
+      font-size: .88rem;
+      color: var(--charcoal-mid);
+    }
+
+    .lang-level {
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--taupe-dark);
+    }
+
+    /* ===================================================
+       EXPERIENCE
+    =================================================== */
+    #experience {
+      background: var(--cream);
+      padding: 7rem 2rem;
+      position: relative;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content:'';
+      position:absolute;
+      left:0; top:1rem; bottom:1rem;
+      width:1px;
+      background:linear-gradient(180deg, var(--blush-deep), var(--taupe) 70%, transparent);
+    }
+
+    .t-item {
+      position: relative;
+      margin-bottom: 2.8rem;
+      padding-left: 1.4rem;
+    }
+
+    .t-item::before {
+      content:'';
+      position:absolute;
+      left:-2.42rem; top:.7rem;
+      width:11px; height:11px;
+      border-radius:50%;
+      background:var(--blush-deep);
+      border:2.5px solid white;
+      box-shadow:0 0 0 3px var(--blush-light);
+    }
+
+    /* Project card — media left, body right, detail full-width below */
+    .project-card {
+      background: white;
+      border-radius: 14px;
+      box-shadow: var(--s1);
+      border: 1px solid rgba(201,216,236,.4);
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--s2);
+    }
+
+    .project-card__media {
+      width: 260px;
+      height: 280px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .project-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-card__body {
+      flex: 1;
+      min-width: 0;
+      padding: 1.75rem 2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card__body::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--blush-deep), var(--gold));
+    }
+
+    .t-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: .6rem;
+    }
+
+    .t-card-logo {
+      height: 26px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .t-company {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .t-role {
+      font-size: .88rem;
+      color: var(--charcoal-mid);
+      margin-top: .15rem;
+    }
+
+    .t-meta { text-align:right; flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:.3rem; }
+
+    .t-date {
+      font-family: var(--script);
+      font-size: 1rem;
+      color: var(--taupe-dark);
+    }
+
+    .t-loc {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--taupe-dark);
+    }
+
+    .project-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin: .6rem 0 .2rem;
+    }
+
+    .project-card__tags span {
+      display: inline-block;
+      background: var(--blush-light);
+      color: var(--blush-deep);
+      font-family: var(--sans);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      padding: .25rem .75rem;
+      border-radius: 20px;
+      border: 1px solid rgba(31,64,128,.18);
+    }
+
+    .project-card__toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--blush-deep);
+      padding: .6rem 0 0;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      transition: opacity .2s;
+      margin-top: auto;
+    }
+
+    .project-card__toggle:hover { opacity: .75; }
+
+    .project-card__toggle svg {
+      transition: transform .3s ease;
+    }
+
+    .project-card__toggle[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+
+    /* Detail panel — spans full card width below media+body */
+    .project-detail {
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .45s ease, opacity .35s ease;
+      opacity: 0;
+    }
+
+    .project-detail.open {
+      max-height: 1400px;
+      opacity: 1;
+    }
+
+    .project-detail__inner {
+      padding: 1.75rem 2rem;
+      border-top: 1px solid rgba(201,216,236,.5);
+    }
+
+    .project-detail__section {
+      margin-bottom: 1.25rem;
+    }
+
+    .project-detail__section h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: .4rem;
+    }
+
+    .project-detail__section p {
+      font-size: .88rem;
+      line-height: 1.72;
+      color: var(--charcoal-mid);
+    }
+
+    .project-detail__gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .6rem;
+      margin-top: 1rem;
+    }
+
+    .project-detail__gallery img {
+      width: 100%;
+      height: 150px;
+      border-radius: 8px;
+      object-fit: cover;
+      object-position: top;
+      box-shadow: var(--s1);
+      transition: transform .3s ease;
+    }
+
+    .project-detail__gallery img:hover { transform: scale(1.03); }
+
+    /* ===================================================
+       EDUCATION
+    =================================================== */
+    #education {
+      background: var(--cream-warm);
+      padding: 7rem 2rem;
+      position: relative;
+    }
+
+    #education::before {
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0;
+      height:3px;
+      background:linear-gradient(90deg, var(--blush), var(--taupe), var(--gold-light));
+    }
+
+    .edu-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
+      gap:1.8rem;
+    }
+
+    .edu-card {
+      background:white;
+      border-radius:16px;
+      padding:2rem 1.75rem;
+      box-shadow:var(--s1);
+      border:1px solid rgba(200,184,162,.2);
+      position:relative;
+      overflow:hidden;
+      transition:transform .3s, box-shadow .3s;
+    }
+
+    .edu-card:hover {
+      transform:translateY(-5px);
+      box-shadow:var(--s2);
+    }
+
+    .edu-card::after {
+      content:'';
+      position:absolute;
+      bottom:0; left:0; right:0;
+      height:3px;
+      background:linear-gradient(90deg, var(--blush), var(--gold));
+    }
+
+    .edu-icon { font-size:2.4rem; display:block; margin-bottom:.9rem; }
+
+    .edu-year {
+      font-family:var(--script);
+      font-size:.92rem;
+      color:var(--taupe-dark);
+      margin-bottom:.4rem;
+    }
+
+    .edu-uni {
+      font-family:var(--serif);
+      font-size:1.12rem;
+      font-weight:600;
+      color:var(--charcoal);
+      margin-bottom:.35rem;
+    }
+
+    .edu-degree {
+      font-size:.88rem;
+      line-height:1.6;
+      color:var(--charcoal-mid);
+    }
+
+    .edu-gpa {
+      display:inline-flex;
+      align-items:center;
+      gap:.3rem;
+      margin-top:.8rem;
+      background:linear-gradient(135deg, rgba(232,213,163,.5), rgba(196,151,74,.12));
+      border:1px solid rgba(196,151,74,.3);
+      border-radius:20px;
+      padding:.28rem .8rem;
+      font-size:.78rem;
+      font-weight:500;
+      color:var(--charcoal);
+    }
+
+    .edu-photos {
+      display: flex;
+      gap: 1.4rem;
+      margin-top: 3rem;
+      justify-content: center;
+    }
+
+    .edu-photo {
+      flex: 1;
+      max-width: 340px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--s2);
+      aspect-ratio: 4 / 3;
+    }
+
+    .edu-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      image-orientation: from-image;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .edu-photo:hover img { transform: scale(1.04); }
+
+    @media (max-width: 640px) {
+      .edu-photos { flex-direction: column; }
+      .edu-photo  { max-width: 100%; }
+    }
+
+    /* ===================================================
+       SKILLS
+    =================================================== */
+    #skills {
+      background:var(--cream-warm);
+      padding:7rem 2rem;
+      position:relative;
+    }
+
+    .skill-cat {
+      font-family:var(--script);
+      font-size:1.3rem;
+      color:var(--taupe-dark);
+      margin-bottom:1rem;
+      margin-top:2.5rem;
+    }
+
+    .skill-cat:first-of-type { margin-top:0; }
+
+    .skills-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(148px, 1fr));
+      gap:.9rem;
+    }
+
+    .sk-card {
+      background:white;
+      border-radius:12px;
+      padding:1.4rem .8rem;
+      text-align:center;
+      box-shadow:var(--s1);
+      border:1px solid rgba(244,194,200,.2);
+      transition:transform .3s cubic-bezier(.34,1.4,.64,1), box-shadow .3s, background .3s, border-color .3s;
+      cursor:default;
+    }
+
+    .sk-card:hover {
+      transform:translateY(-5px) rotate(-1.5deg);
+      box-shadow:var(--s2);
+      background:var(--blush-light);
+      border-color:var(--blush);
+    }
+
+    .sk-icon { font-size:1.8rem; display:block; margin-bottom:.45rem; }
+
+    .sk-name {
+      font-size:.8rem;
+      font-weight:500;
+      color:var(--charcoal);
+      line-height:1.35;
+    }
+
+    /* ===================================================
+       CONTACT
+    =================================================== */
+    #contact {
+      background:var(--blush);
+      padding:7rem 2rem;
+      position:relative;
+      overflow:hidden;
+    }
+
+    #contact::before {
+      content:'';
+      position:absolute; inset:0;
+      background:radial-gradient(ellipse 55% 50% at 75% 40%, rgba(255,255,255,.22) 0%, transparent 65%);
+      pointer-events:none;
+    }
+
+    .contact-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:5rem;
+      align-items:start;
+    }
+
+    .contact-left { position:relative; z-index:1; }
+
+    .contact-left p {
+      font-size:1rem;
+      line-height:1.82;
+      color:var(--charcoal-mid);
+      margin-bottom:2rem;
+    }
+
+    .contact-links {
+      display:flex;
+      flex-direction:column;
+      gap:.85rem;
+    }
+
+    .c-link {
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+      text-decoration:none;
+      color:var(--charcoal);
+      font-size:.92rem;
+      padding:.7rem 1rem;
+      background:rgba(255,255,255,.5);
+      border:1px solid rgba(255,255,255,.65);
+      border-radius:10px;
+      backdrop-filter:blur(4px);
+      transition:transform .25s, background .25s;
+    }
+
+    .c-link:hover {
+      transform:translateX(5px);
+      background:rgba(255,255,255,.7);
+    }
+
+    .c-link-icon { font-size:1.1rem; width:22px; text-align:center; }
+
+    /* --- Contact form --- */
+    .form-card {
+      background:white;
+      border-radius:20px;
+      padding:2.4rem 2.2rem;
+      box-shadow:var(--s3);
+      position:relative;
+      z-index:1;
+    }
+
+    .form-title {
+      font-family:var(--script);
+      font-size:1.55rem;
+      color:var(--charcoal);
+      margin-bottom:1.5rem;
+    }
+
+    .fg { margin-bottom:1.15rem; }
+
+    .fg label {
+      display:block;
+      font-size:.74rem;
+      font-weight:500;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--charcoal-mid);
+      margin-bottom:.35rem;
+    }
+
+    .fg input,
+    .fg textarea {
+      width:100%;
+      padding:.8rem 1rem;
+      border:1.5px solid rgba(200,184,162,.38);
+      border-radius:9px;
+      font-family:var(--sans);
+      font-size:.92rem;
+      color:var(--charcoal);
+      background:var(--cream);
+      outline:none;
+      transition:border-color .22s, box-shadow .22s;
+    }
+
+    .fg input:focus,
+    .fg textarea:focus {
+      border-color:var(--blush-deep);
+      box-shadow:0 0 0 3px rgba(224,149,159,.22);
+    }
+
+    .fg textarea { resize:vertical; min-height:108px; }
+
+    .form-btn {
+      width:100%;
+      padding:.95rem;
+      background:linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-mid) 100%);
+      color:white;
+      border:none;
+      border-radius:9px;
+      font-family:var(--sans);
+      font-size:.92rem;
+      font-weight:500;
+      letter-spacing:.04em;
+      cursor:pointer;
+      transition:transform .3s, box-shadow .3s;
+      position:relative; overflow:hidden;
+    }
+
+    .form-btn::after {
+      content:'';
+      position:absolute; inset:0;
+      background:linear-gradient(135deg,transparent,rgba(244,194,200,.18));
+      opacity:0;
+      transition:opacity .3s;
+    }
+
+    .form-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(51,40,40,.28); }
+    .form-btn:hover::after { opacity:1; }
+
+    .form-success {
+      display:none;
+      text-align:center;
+      padding:2rem 1rem;
+    }
+
+    .form-success .scheck { font-size:3rem; display:block; margin-bottom:.5rem; }
+
+    .form-success p {
+      font-family:var(--script);
+      font-size:1.35rem;
+      color:var(--charcoal);
+    }
+
+    /* ===================================================
+       FOOTER
+    =================================================== */
+    footer {
+      background:var(--charcoal);
+      text-align:center;
+      padding:2.8rem 2rem;
+      color:rgba(253,248,240,.6);
+    }
+
+    .ft-name {
+      font-family:var(--serif);
+      font-size:1.45rem;
+      color:var(--cream);
+      display:block;
+      margin-bottom:.3rem;
+    }
+
+    .ft-sub { font-size:.78rem; letter-spacing:.06em; }
+
+    .ft-hearts {
+      font-size:.8rem;
+      color:var(--blush);
+      margin-top:.55rem;
+      display:block;
+    }
+
+    /* ===================================================
+       RESPONSIVE
+    =================================================== */
+    @media (max-width:920px) {
+      .about-grid {
+        grid-template-columns:1fr;
+        gap:3.2rem;
+      }
+      .polaroid-stack { margin:0 auto; }
+
+      .contact-grid {
+        grid-template-columns:1fr;
+        gap:3rem;
+      }
+
+      .obj-camera { display:none; }
+    }
+
+    @media (max-width:640px) {
+      .obj-ring, .obj-flower { display:none; }
+      .hero-name { font-size:3.2rem; }
+
+      #about, #experience, #education, #skills, #contact {
+        padding:5rem 1.25rem;
+      }
+
+      .project-card__media { width:100%; height:200px; }
+      .t-top { flex-direction:column; }
+      .t-meta { text-align:left; align-items:flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+<section id="hero">
+
+  <!-- Floating navigation objects -->
+  <nav class="nav-float" aria-label="Site navigation">
+
+    <a href="#about" class="nav-obj obj-bag" aria-label="About me">
+      <span class="obj-icon">👜</span>
+      <span class="obj-label">about me</span>
+    </a>
+
+    <a href="#experience" class="nav-obj obj-ring" aria-label="Experience">
+      <span class="obj-icon">💼</span>
+      <span class="obj-label">experience</span>
+    </a>
+
+    <a href="#education" class="nav-obj obj-flower" aria-label="Education">
+      <span class="obj-icon">🎓</span>
+      <span class="obj-label">education</span>
+    </a>
+
+    <a href="#skills" class="nav-obj obj-sunnies" aria-label="Skills">
+      <span class="obj-icon">🛠️️</span>
+      <span class="obj-label">skills</span>
+    </a>
+
+    <a href="#skills" class="nav-obj obj-camera" aria-label="Skills">
+      <span class="obj-icon">⚡</span>
+      <span class="obj-label">my toolkit</span>
+    </a>
+
+    <a href="#contact" class="nav-obj obj-env" aria-label="Contact">
+      <span class="obj-icon">✉️</span>
+      <span class="obj-label">contact</span>
+    </a>
+
+  </nav>
+
+  <!-- Center content -->
+  <div class="hero-center">
+    <span class="hero-hi">hi, i'm</span>
+    <h1 class="hero-name">Teresa<br>Gadola</h1>
+    <p class="hero-subtitle">Global Marketing & Campaigns Specialist</p>
+    <p class="hero-tagline">what's in my bag? ✦</p>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-hint" aria-hidden="true">
+    <span>scroll</span>
+    <div class="scroll-chevron"></div>
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+
+      <!-- Polaroid stack -->
+      <div class="polaroid-stack reveal">
+        <div class="polaroid-back"></div>
+        <div class="polaroid">
+          <div class="washi"></div>
+          <div class="polaroid-photo"><img src="self_image.jpeg" alt="Teresa Gadola" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+          <p class="polaroid-caption">Teresa, Rotterdam ✦</p>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="about-body">
+        <span class="section-label reveal">get to know me</span>
+        <h2 class="section-title reveal d1">About <em>Me</em></h2>
+        <div class="divider reveal d2"></div>
+
+        <p class="reveal d2">
+          Result-driven Marketing Master's graduate with a passion for B2B communications, impactful storytelling, and international project coordination. With a background spanning three top European universities and hands-on experience at global brands, I bring creativity, strategic thinking, and extreme precision to every project.
+        </p>
+        <p class="reveal d3">
+          From drafting targeted digital content at FrieslandCampina to organizing community-driven initiatives for the Red Cross, I thrive at the intersection of engaging communication and seamless execution. I am currently seeking opportunities in PR, B2B marketing, or account management where I can build strong relationships and drive results on a global scale.
+        </p>
+
+        <div class="pills reveal d3">
+          <span class="pill">📍 Rotterdam, NL</span>
+          <span class="pill">🎓 MSc Marketing Management</span>
+          <span class="pill">✨ Open to opportunities</span>
+        </div>
+
+        <div class="langs reveal d4">
+          <div class="lang">
+            <span class="lang-flag">🇪🇸</span>
+            <span class="lang-name">Spanish</span>
+            <span class="lang-level">Native</span>
+          </div>
+          <div class="lang">
+            <span class="lang-flag">🇬🇧</span>
+            <span class="lang-name">English</span>
+            <span class="lang-level">Fluent</span>
+          </div>
+          <div class="lang">
+            <span class="lang-flag">🇮🇹</span>
+            <span class="lang-name">Italian</span>
+            <span class="lang-level">Fluent</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     EDUCATION
+===================================================== -->
+<section id="education">
+  <div class="section-inner">
+
+    <span class="section-label reveal">academic journey</span>
+    <h2 class="section-title reveal d1">Education</h2>
+    <div class="divider reveal d2"></div>
+
+    <div class="edu-grid">
+
+      <div class="edu-card reveal">
+        <span class="edu-icon">🎓</span>
+        <div class="edu-year">2023 — 2025</div>
+        <div class="edu-uni">Erasmus University</div>
+        <p class="edu-degree">MSc Marketing Management<br><em>Rotterdam, Netherlands</em></p>
+        <span class="edu-gpa">✦ GPA&nbsp;8.0</span>
+      </div>
+
+      <div class="edu-card reveal d1">
+        <span class="edu-icon">🏛️</span>
+        <div class="edu-year">2021</div>
+        <div class="edu-uni">Bocconi University</div>
+        <p class="edu-degree">Exchange Student<br>Fashion Management &amp; Marketing in Creative Industries<br><em>Milan, Italy</em></p>
+      </div>
+
+      <div class="edu-card reveal d2">
+        <span class="edu-icon">📚</span>
+        <div class="edu-year">2019 — 2023</div>
+        <div class="edu-uni">Tilburg University</div>
+        <p class="edu-degree">BSc International Business Administration<br><em>Tilburg, Netherlands</em></p>
+      </div>
+
+    </div>
+
+    <div class="edu-photos reveal d1">
+      <div class="edu-photo">
+        <img src="graduation_picture_with_friend.JPG" alt="Graduation with friend" />
+      </div>
+      <div class="edu-photo">
+        <img src="graduation_picture.jpeg" alt="Graduation ceremony at Erasmus University" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     EXPERIENCE
+===================================================== -->
+<section id="experience">
+  <div class="section-inner">
+
+    <span class="section-label reveal">where i've been</span>
+    <h2 class="section-title reveal d1">Work <em>Experience</em></h2>
+    <div class="divider reveal d2"></div>
+
+    <div class="timeline">
+
+      <!-- FrieslandCampina -->
+      <div class="t-item reveal">
+        <article class="project-card" data-project="debic">
+          <div class="project-card__media" style="height:auto;">
+            <img src="debic_main.png" alt="DEBIC work" style="height:auto;" />
+          </div>
+          <div class="project-card__body">
+            <div class="t-top">
+              <div>
+                <div class="t-company">FrieslandCampina — DEBIC</div>
+                <div class="t-role">Branding &amp; Communications Intern</div>
+              </div>
+              <div class="t-meta">
+                <img src="logo_friesland.png" class="t-card-logo" alt="FrieslandCampina" />
+                <div class="t-date">2024</div>
+                <div class="t-loc">Amersfoort, NL</div>
+              </div>
+            </div>
+            <div class="project-card__tags">
+              <span>Global Campaign Coordination</span>
+              <span>B2B Digital Content Creation</span>
+              <span>Cross-cultural Stakeholder Management</span>
+              <span>Asset Localisation &amp; QA</span>
+              <span>A/B Testing &amp; Engagement Analytics</span>
+              <span>Brand Identity &amp; Visual Guidelines</span>
+              <span>Project Management · Jira</span>
+              <span>CRM · Salesforce</span>
+              <span>Canva</span>
+            </div>
+            <button class="project-card__toggle" onclick="toggleExp(this)" aria-expanded="false">
+              <span>Read more</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </div>
+          <div class="project-detail" id="detail-debic">
+            <div class="project-detail__inner">
+              <div class="project-detail__section">
+                <h4>Day-to-day tasks</h4>
+                <p>I created and curated highly targeted B2B content, which included drafting email campaigns, writing engaging social media copy for LinkedIn and Instagram, and helping produce digital inspiration magazines tailored specifically for professional chefs and bakers.</p>
+              </div>
+              <div class="project-detail__section">
+                <h4>Core responsibilities</h4>
+                <p>I acted as the central operational hub for our global digital campaigns. This meant taking full ownership of the quality control, localization, and seamless distribution of over 100 digital assets across 8 different international markets.</p>
+              </div>
+              <div class="project-detail__section">
+                <h4>Key skills acquired</h4>
+                <p>I mastered complex stakeholder management and cross-cultural communication by aligning different international teams. I also significantly sharpened my technical skills in B2B storytelling, digital content management, and A/B testing methodologies.</p>
+              </div>
+              <div class="project-detail__section">
+                <h4>Impact &amp; results</h4>
+                <p>I didn't just create content; I tracked its performance. By rigorously executing A/B tests on our digital marketing assets and visual hierarchies, I successfully helped drive a <strong>13% increase in overall audience engagement</strong>.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Rode Kruis -->
+      <div class="t-item reveal d1">
+        <article class="project-card" data-project="redcross">
+          <div class="project-card__media">
+            <img src="rec_cross_image.jpg" alt="Red Cross event" />
+          </div>
+          <div class="project-card__body">
+            <div class="t-top">
+              <div>
+                <div class="t-company">Rode Kruis (Red Cross)</div>
+                <div class="t-role">Marketing &amp; Communications Volunteer</div>
+              </div>
+              <div class="t-meta">
+                <img src="red_cross_logo.png" class="t-card-logo" alt="Rode Kruis" />
+                <div class="t-date">2022–2023</div>
+                <div class="t-loc">Tilburg, NL</div>
+              </div>
+            </div>
+            <div class="project-card__tags">
+              <span>Multichannel Event Promotion</span>
+              <span>Community Fundraising Strategy</span>
+              <span>Empathetic Brand Communication</span>
+              <span>Social Media Content Planning</span>
+              <span>Impact Storytelling</span>
+              <span>End-to-end Campaign Execution</span>
+            </div>
+            <button class="project-card__toggle" onclick="toggleExp(this)" aria-expanded="false">
+              <span>Read more</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </div>
+          <div class="project-detail" id="detail-redcross">
+            <div class="project-detail__inner">
+              <div class="project-detail__section">
+                <h4>Day-to-day tasks</h4>
+                <p>I supported the Red Cross marketing team by executing digital campaigns, scheduling social media content, and organizing on-the-ground community events for university students following the COVID lockdowns.</p>
+              </div>
+              <div class="project-detail__section">
+                <h4>Core responsibilities</h4>
+                <p>I took ownership of end-to-end event promotion and logistics. This meant acting as the bridge between the organization and the student body, ensuring our messaging was empathetic, welcoming, and effectively distributed to our audience.</p>
+              </div>
+              <div class="project-detail__section">
+                <h4>Key skills acquired</h4>
+                <p>I developed a deep understanding of community building, empathetic leadership, and authentic, human-centric communication. I also sharpened my organizational skills by managing event schedules and handling sensitive societal themes.</p>
+              </div>
+              <div class="project-detail__section">
+                <h4>Impact &amp; results</h4>
+                <p>I successfully helped rebuild a disconnected student community during a tough transitional period. By creating safe, engaging spaces for socialization, we facilitated genuine connections and helped attendees feel supported and significantly less isolated.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Inditex -->
+      <div class="t-item reveal d2">
+        <article class="project-card" data-project="inditex">
+          <div class="project-card__media">
+            <img src="Screenshot 2026-03-01 at 13.37.49.png" alt="Inditex store" />
+          </div>
+          <div class="project-card__body">
+            <div class="t-top">
+              <div>
+                <div class="t-company">Inditex</div>
+                <div class="t-role">Retail Sales Assistant</div>
+              </div>
+              <div class="t-meta">
+                <img src="Inditex_logo_black.svg" class="t-card-logo" alt="Inditex" />
+                <div class="t-date">2022–2023</div>
+                <div class="t-loc">Rotterdam, NL</div>
+              </div>
+            </div>
+            <div class="project-card__tags">
+              <span>Customer Experience Design</span>
+              <span>In-store Visual Merchandising</span>
+              <span>High-volume Retail Operations</span>
+              <span>Retail Brand Representation</span>
+              <span>Fast-paced Team Collaboration</span>
+            </div>
+            <button class="project-card__toggle" onclick="toggleExp(this)" aria-expanded="false">
+              <span>Read more</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </div>
+          <div class="project-detail" id="detail-inditex">
+            <div class="project-detail__inner">
+              <div class="project-detail__section">
+                <h4>About the role</h4>
+                <p>Delivered excellent customer service, supporting store objectives and ensuring proper maintenance of store sections, with a focus on the <strong>customer journey and in-store user experience</strong>.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SKILLS
+===================================================== -->
+<section id="skills">
+  <div class="section-inner">
+
+    <span class="section-label reveal">what i bring to the table</span>
+    <h2 class="section-title reveal d1">Skills &amp; <em>Expertise</em></h2>
+    <div class="divider reveal d2"></div>
+
+    <p class="skill-cat reveal">Marketing &amp; Strategy</p>
+    <div class="skills-grid">
+      <div class="sk-card reveal">      <span class="sk-icon">📣</span><span class="sk-name">Campaign Execution</span></div>
+      <div class="sk-card reveal d1">   <span class="sk-icon">🌐</span><span class="sk-name">Digital Content Creation</span></div>
+      <div class="sk-card reveal d2">   <span class="sk-icon">🤝</span><span class="sk-name">Stakeholder Communication</span></div>
+      <div class="sk-card reveal d3">   <span class="sk-icon">✍️</span><span class="sk-name">Copywriting &amp; Briefing</span></div>
+      <div class="sk-card reveal d1">   <span class="sk-icon">🌍</span><span class="sk-name">International Project Coordination</span></div>
+      <div class="sk-card reveal d2">   <span class="sk-icon">📱</span><span class="sk-name">Social Media</span></div>
+    </div>
+
+    <p class="skill-cat reveal">Tools &amp; Technology</p>
+    <div class="skills-grid">
+      <div class="sk-card reveal">      <span class="sk-icon">🎨</span><span class="sk-name">Canva</span></div>
+      <div class="sk-card reveal d1">   <span class="sk-icon">📊</span><span class="sk-name">CRM / Salesforce</span></div>
+      <div class="sk-card reveal d2">   <span class="sk-icon">📋</span><span class="sk-name">Project Management / Jira</span></div>
+      <div class="sk-card reveal d3">   <span class="sk-icon">🤖</span><span class="sk-name">Workflow Automation &amp; AI</span></div>
+      <div class="sk-card reveal">      <span class="sk-icon">📈</span><span class="sk-name">Data Analysis / R Studio</span></div>
+      <div class="sk-card reveal d1">   <span class="sk-icon">💼</span><span class="sk-name">MS Office Suite</span></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <!-- Left: info -->
+      <div class="contact-left">
+        <span class="section-label reveal" style="color:var(--taupe-dark)">let's connect</span>
+        <h2 class="section-title reveal d1">Say <em>Hello</em>&nbsp;✉️</h2>
+        <div class="divider reveal d2"></div>
+
+        <p class="reveal d2">
+          I'm currently open to new roles in marketing, brand strategy, and content management.
+          Whether you have a project in mind or just want to chat. My inbox is always open.
+        </p>
+
+        <div class="contact-links reveal d3">
+          <a href="mailto:mariateresagadola@gmail.com" class="c-link">
+            <span class="c-link-icon">✉️</span>
+            mariateresagadola@gmail.com
+          </a>
+          <a href="tel:+34611103474" class="c-link">
+            <span class="c-link-icon">📱</span>
+            +34 611 103 474
+          </a>
+          <a href="https://www.linkedin.com/in/teresa-gadola-08aa1420b" target="_blank" rel="noopener noreferrer" class="c-link">
+            <span class="c-link-icon">💼</span>
+            LinkedIn Profile
+          </a>
+          <span class="c-link">
+            <span class="c-link-icon">📍</span>
+            Rotterdam, Netherlands
+          </span>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="reveal d2">
+        <div class="form-card">
+          <p class="form-title">drop me a note ✦</p>
+
+          <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+            <div class="fg">
+              <label for="fname">Your Name</label>
+              <input type="text" id="fname" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="fg">
+              <label for="femail">Email Address</label>
+              <input type="email" id="femail" name="email" placeholder="jane@company.com" required />
+            </div>
+            <div class="fg">
+              <label for="fsubject">Subject</label>
+              <input type="text" id="fsubject" name="subject" placeholder="Let's work together!" />
+            </div>
+            <div class="fg">
+              <label for="fmessage">Message</label>
+              <textarea id="fmessage" name="message" placeholder="Hi Teresa, I'd love to discuss…" required></textarea>
+            </div>
+            <button type="submit" class="form-btn">Send Message →</button>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            <span class="scheck">🌸</span>
+            <p>Thank you! I'll be in touch soon.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+<footer>
+  <span class="ft-name">Teresa Gadola</span>
+  <p class="ft-sub">Marketing Management Graduate &nbsp;·&nbsp; Rotterdam, NL</p>
+  <span class="ft-hearts">made with ♡</span>
+</footer>
+
+
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
+<script>
+  /* ---- Scroll reveal ---- */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ---- Smooth anchor scroll ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* ---- Parallax drift on hero items ---- */
+  const heroItems = document.querySelectorAll('.nav-obj');
+  window.addEventListener('scroll', () => {
+    const sy = window.scrollY;
+    if (sy < window.innerHeight) {
+      heroItems.forEach((el, i) => {
+        const speed = 0.08 + i * 0.025;
+        el.style.transform = `translateY(${sy * speed}px)`;
+      });
+    }
+  }, { passive: true });
+
+  /* ---- Contact form success state ---- */
+  function toggleExp(btn) {
+    const card = btn.closest('.project-card');
+    const detail = card.querySelector('.project-detail');
+    const open = detail.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.querySelector('span').textContent = open ? 'Read less' : 'Read more';
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+
+    form.style.cssText = 'opacity:0;transform:scale(.96);transition:all .3s ease;';
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.style.cssText = 'display:block;opacity:0;transform:scale(.92);transition:all .4s ease;';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          success.style.opacity = '1';
+          success.style.transform = 'scale(1)';
+        });
+      });
+    }, 300);
+  }
+</script>
+
+</body>
+</html>
