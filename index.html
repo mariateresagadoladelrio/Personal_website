@@ -854,10 +854,7 @@
     }
 
     .contact-grid {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:5rem;
-      align-items:start;
+      max-width:600px;
     }
 
     .contact-left { position:relative; z-index:1; }
@@ -897,97 +894,6 @@
 
     .c-link-icon { font-size:1.1rem; width:22px; text-align:center; }
 
-    /* --- Contact form --- */
-    .form-card {
-      background:white;
-      border-radius:20px;
-      padding:2.4rem 2.2rem;
-      box-shadow:var(--s3);
-      position:relative;
-      z-index:1;
-    }
-
-    .form-title {
-      font-family:var(--script);
-      font-size:1.55rem;
-      color:var(--charcoal);
-      margin-bottom:1.5rem;
-    }
-
-    .fg { margin-bottom:1.15rem; }
-
-    .fg label {
-      display:block;
-      font-size:.74rem;
-      font-weight:500;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      color:var(--charcoal-mid);
-      margin-bottom:.35rem;
-    }
-
-    .fg input,
-    .fg textarea {
-      width:100%;
-      padding:.8rem 1rem;
-      border:1.5px solid rgba(200,184,162,.38);
-      border-radius:9px;
-      font-family:var(--sans);
-      font-size:.92rem;
-      color:var(--charcoal);
-      background:var(--cream);
-      outline:none;
-      transition:border-color .22s, box-shadow .22s;
-    }
-
-    .fg input:focus,
-    .fg textarea:focus {
-      border-color:var(--blush-deep);
-      box-shadow:0 0 0 3px rgba(224,149,159,.22);
-    }
-
-    .fg textarea { resize:vertical; min-height:108px; }
-
-    .form-btn {
-      width:100%;
-      padding:.95rem;
-      background:linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-mid) 100%);
-      color:white;
-      border:none;
-      border-radius:9px;
-      font-family:var(--sans);
-      font-size:.92rem;
-      font-weight:500;
-      letter-spacing:.04em;
-      cursor:pointer;
-      transition:transform .3s, box-shadow .3s;
-      position:relative; overflow:hidden;
-    }
-
-    .form-btn::after {
-      content:'';
-      position:absolute; inset:0;
-      background:linear-gradient(135deg,transparent,rgba(244,194,200,.18));
-      opacity:0;
-      transition:opacity .3s;
-    }
-
-    .form-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(51,40,40,.28); }
-    .form-btn:hover::after { opacity:1; }
-
-    .form-success {
-      display:none;
-      text-align:center;
-      padding:2rem 1rem;
-    }
-
-    .form-success .scheck { font-size:3rem; display:block; margin-bottom:.5rem; }
-
-    .form-success p {
-      font-family:var(--script);
-      font-size:1.35rem;
-      color:var(--charcoal);
-    }
 
     /* ===================================================
        FOOTER
@@ -1026,10 +932,6 @@
       }
       .polaroid-stack { margin:0 auto; }
 
-      .contact-grid {
-        grid-template-columns:1fr;
-        gap:3rem;
-      }
 
       .obj-camera { display:none; }
     }
@@ -1458,37 +1360,6 @@
         </div>
       </div>
 
-      <!-- Right: form -->
-      <div class="reveal d2">
-        <div class="form-card">
-          <p class="form-title">drop me a note ✦</p>
-
-          <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
-            <div class="fg">
-              <label for="fname">Your Name</label>
-              <input type="text" id="fname" name="name" placeholder="Jane Smith" required />
-            </div>
-            <div class="fg">
-              <label for="femail">Email Address</label>
-              <input type="email" id="femail" name="email" placeholder="jane@company.com" required />
-            </div>
-            <div class="fg">
-              <label for="fsubject">Subject</label>
-              <input type="text" id="fsubject" name="subject" placeholder="Let's work together!" />
-            </div>
-            <div class="fg">
-              <label for="fmessage">Message</label>
-              <textarea id="fmessage" name="message" placeholder="Hi Teresa, I'd love to discuss…" required></textarea>
-            </div>
-            <button type="submit" class="form-btn">Send Message →</button>
-          </form>
-
-          <div class="form-success" id="formSuccess">
-            <span class="scheck">🌸</span>
-            <p>Thank you! I'll be in touch soon.</p>
-          </div>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -1548,23 +1419,6 @@
     btn.querySelector('span').textContent = open ? 'Read less' : 'Read more';
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = document.getElementById('contactForm');
-    const success = document.getElementById('formSuccess');
-
-    form.style.cssText = 'opacity:0;transform:scale(.96);transition:all .3s ease;';
-    setTimeout(() => {
-      form.style.display = 'none';
-      success.style.cssText = 'display:block;opacity:0;transform:scale(.92);transition:all .4s ease;';
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          success.style.opacity = '1';
-          success.style.transform = 'scale(1)';
-        });
-      });
-    }, 300);
-  }
 </script>
 
 </body>
